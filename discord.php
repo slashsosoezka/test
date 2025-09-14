@@ -2,7 +2,7 @@
 // discord_webhook_proxy.php
 // Простой прокси для Discord webhook с поддержкой отправки файлов.
 // Настройте URL вебхука: можно положить сюда или в env-переменную DISCORD_WEBHOOK_URL
-$DISCORD_WEBHOOK_URL = getenv('DISCORD_WEBHOOK_URL') ?: 'https://discord.com/api/webhooks/1414944068441608364/u7qaCwJ_04jvHFgrs0_MNOpv-_P8zJx-W3bztfT5fVYnbWv5lQCMyhEMo-yPMFA_k5pf';
+$DISCORD_WEBHOOK_URL = getenv('DISCORD_WEBHOOK_URL') ?: '';
 
 // max download size for remote files (bytes). Установите в соответствии с лимитами хостинга/Discord.
 define('MAX_REMOTE_FILE_BYTES', 8 * 1024 * 1024); // 8 MB
@@ -179,3 +179,4 @@ if ($http_status >= 200 && $http_status < 300) {
     $body = $decoded !== null ? $decoded : $response;
     send_json(['status' => 'error', 'discord_status' => $http_status, 'discord_response' => $body], $http_status ?: 500);
 }
+
